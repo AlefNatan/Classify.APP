@@ -1,0 +1,81 @@
+<ion-content>
+  <div class="px-5 py-7">
+    <header class="mb-5">
+      <ion-text color="dark">
+        <h4 class="font-semibold text-xl text-black my-0">Criar novo post</h4>
+      </ion-text>
+    </header>
+
+    <main class="flex flex-col gap-5 pb-32">
+      <form
+        [formGroup]="publishFormGroup"
+        (ngSubmit)="handleSubmit()"
+        class="flex flex-col gap-4"
+      >
+        <div>
+          <ion-label class="font-semibold">Título</ion-label>
+          <app-text-input
+            [counter]="true"
+            [maxLength]="50"
+            [placeholder]="'Digite o título do post...'"
+            [controlName]="publishFormGroup.controls['title']"
+            (valueChange)="updateFormControlValue(publishFormGroup, 'title', $event)"
+          />
+        </div>
+
+        <div>
+          <ion-label class="font-semibold">Subtítulo</ion-label>
+          <app-text-input
+            [counter]="true"
+            [maxLength]="80"
+            [placeholder]="'Digite o subtítulo do post...'"
+            [controlName]="publishFormGroup.controls['subtitle']"
+            (valueChange)="updateFormControlValue(publishFormGroup, 'subtitle', $event)"
+          />
+        </div>
+
+        <div>
+          <ion-label class="font-semibold">Descrição</ion-label>
+          <app-textarea-input
+            [counter]="true"
+            [maxLength]="280"
+            [placeholder]="'Digite a descrição do post...'"
+            [controlName]="publishFormGroup.controls['description']"
+            (valueChange)="updateFormControlValue(publishFormGroup, 'description', $event)"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="bg-primary text-white h-10 rounded-lg w-full"
+          [disabled]="publishFormGroup.invalid"
+        >
+          Publicar
+        </button>
+      </form>
+
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-bold">Atenção!</span> Este post ficará visível por 7
+          dias. Após esse período, ele será automaticamente removido da
+          plataforma.
+        </div>
+      </div>
+    </main>
+  </div>
+</ion-content>

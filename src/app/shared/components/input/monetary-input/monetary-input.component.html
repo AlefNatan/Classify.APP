@@ -1,0 +1,14 @@
+<ion-input
+  fill="outline"
+  [placeholder]="placeholder"
+  (ionInput)="emitValue($event)"
+  type="text"
+  [errorText]="getErrorText(controlName, errorMessages)"
+  [formControl]="controlName"
+  inputmode="numeric"
+  required
+>
+  <ion-text slot="start" class="!me-0">
+    <small class="text-sm text-black/50 border-r-2 pr-2 mr-2">R$</small>
+  </ion-text>
+</ion-input>

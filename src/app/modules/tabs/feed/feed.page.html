@@ -1,0 +1,92 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="px-5 py-7">
+    <header class="flex flex-col gap-5 mb-5">
+      <ion-text color="dark">
+        <h4 class="font-semibold text-xl text-black my-0">Feed</h4>
+      </ion-text>
+    </header>
+
+    <main class="flex flex-col gap-6">
+      <div
+        *ngIf="!isLoading && posts.length === 0"
+        class="flex flex-col items-center justify-center py-8"
+      >
+        <ion-icon
+          name="document-text-outline"
+          class="text-4xl text-gray-400 mb-2"
+        ></ion-icon>
+        <p class="text-gray-500 text-center">
+          Não há nenhum post para ser exibido.
+        </p>
+      </div>
+
+      <div
+        *ngFor="let post of posts"
+        class="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold"
+          >
+            {{ post.user.name[0] }}{{ post.user.lastName[0] }}
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-800 mt-2 mb-0">Por</h4>
+            <p class="text-sm text-gray-500">
+              {{ post.user.name }} {{ post.user.lastName }}
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h2>
+        <h3 class="text-lg text-gray-700 mb-3">{{ post.subtitle }}</h3>
+        <p class="text-gray-600">{{ post.description }}</p>
+
+        <div class="mt-4 flex items-center justify-between text-sm">
+          <span class="text-gray-500">
+            {{ post.createdAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+          <div class="flex items-center gap-2">
+            <button
+              (click)="sharePostWhatsapp(post)"
+              class="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors"
+            >
+              <ion-icon name="logo-whatsapp" class="text-lg"></ion-icon>
+              <span>Whatsapp</span>
+            </button>
+            <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+            <button
+              (click)="sharePostEmail(post)"
+              class="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors"
+            >
+              <ion-icon name="mail" class="text-lg"></ion-icon>
+              <span>Email</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="flex justify-center py-4">
+        <ion-spinner></ion-spinner>
+      </div>
+
+      <ion-infinite-scroll
+        (ionInfinite)="onScroll($event)"
+        [disabled]="!hasMore"
+      >
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+      <div
+        *ngIf="!hasMore && posts.length > 0"
+        class="text-center text-gray-500 py-4 mb-10"
+      >
+        Não há mais posts para carregar
+      </div>
+    </main>
+  </div>
+</ion-content>

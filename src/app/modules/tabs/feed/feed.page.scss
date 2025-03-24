@@ -1,0 +1,7 @@
+ion-content {
+  height: 100%;
+}
+
+ion-content::part(scroll) {
+  padding-bottom: 20px;
+}

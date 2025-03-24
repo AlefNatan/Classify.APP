@@ -1,0 +1,7 @@
+{
+  "name": "Classify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

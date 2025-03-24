@@ -1,0 +1,13 @@
+<ion-input
+  fill="outline"
+  autocapitalize="sentences"
+  aria-label="aria-label"
+  [placeholder]="placeholder"
+  (ionInput)="emitValue($event)"
+  type="text"
+  [errorText]="getErrorText(controlName, errorMessages)"
+  [formControl]="controlName"
+  inputmode="numeric"
+  required
+>
+</ion-input>

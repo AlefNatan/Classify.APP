@@ -1,0 +1,13 @@
+<ion-textarea
+  fill="outline"
+  autocapitalize="sentences"
+  aria-label="aria-label"
+  [placeholder]="placeholder"
+  (ionInput)="emitValue($event)"
+  [counter]="counter"
+  [maxlength]="maxLength"
+  [errorText]="getErrorText(controlName, errorMessages)"
+  [formControl]="controlName"
+  [inputmode]="inputMode"
+  [required]="required"
+/>

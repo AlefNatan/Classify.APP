@@ -1,0 +1,89 @@
+<ion-content class="">
+  <main class="flex flex-col justify-center items-center h-screen bg-white p-5">
+    <div class="bg-white border border-[#00000020] rounded-lg p-10 w-full">
+      <section class="text-center mb-10">
+        <div
+          class="flex items-center gap-2 justify-center w-32 mx-auto bg-gray-300 px-3 py-2 rounded-md font-bold text-1xl text-gray-700"
+        >
+          <ion-icon name="pricetags"></ion-icon>
+          Classify
+        </div>
+
+        <ion-text color="dark">
+          <h4 class="font-semibold text-xl text-black">Criar nova conta</h4>
+        </ion-text>
+      </section>
+
+      <form class="flex flex-col gap-5" [formGroup]="SignupFormGroup">
+        <div>
+          <app-text-input
+            [label]="'Nome'"
+            [placeholder]="'Nome'"
+            [type]="'text'"
+            [controlName]="SignupFormGroup.controls['name']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'name', $event)"
+          />
+        </div>
+
+        <div>
+          <app-text-input
+            [label]="'Sobrenome'"
+            [placeholder]="'Sobrenome'"
+            [type]="'text'"
+            [controlName]="SignupFormGroup.controls['lastName']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'lastName', $event)"
+          />
+        </div>
+
+        <div>
+          <app-text-input
+            [label]="'E-mail'"
+            [placeholder]="'Email'"
+            [type]="'email'"
+            [controlName]="SignupFormGroup.controls['email']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'email', $event)"
+          />
+        </div>
+
+        <div>
+          <app-phone-input
+            [label]="'Telefone'"
+            [placeholder]="'Telefone'"
+            [controlName]="SignupFormGroup.controls['phone']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'phone', $event)"
+          />
+        </div>
+
+        <div>
+          <app-password-input
+            [label]="'Senha'"
+            [placeholder]="'Senha'"
+            [controlName]="SignupFormGroup.controls['password']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'password', $event)"
+          />
+        </div>
+
+        <div>
+          <app-password-input
+            [label]="'Confirmar Senha'"
+            [placeholder]="'Confirmar Senha'"
+            [controlName]="SignupFormGroup.controls['confirmPassword']"
+            (valueChange)="updateFormControlValue(SignupFormGroup, 'confirmPassword', $event)"
+          />
+        </div>
+
+        <button
+          class="bg-primary text-white h-10 rounded-lg w-full"
+          type="submit"
+          (click)="handleSubmit()"
+        >
+          Criar Conta
+        </button>
+      </form>
+
+      <section class="flex justify-center items-center mt-5">
+        <a class="text-primary" routerLink="/auth/login">Já tenho uma conta</a>
+      </section>
+    </div>
+  </main>
+</ion-content>

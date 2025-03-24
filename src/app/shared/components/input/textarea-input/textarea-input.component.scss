@@ -1,0 +1,25 @@
+.ion-custom-input,
+.ion-custom-input > ion-input {
+  --background: var(--ion-color-light-shade) !important;
+  --color: var(--ion-color-dark-tint);
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 0.8;
+  overflow: hidden;
+}
+
+.textarea-fill-outline.sc-ion-textarea-md-h {
+  --border-radius: 0.5rem;
+  --padding-start: 1rem;
+  --border-color: #78787832;
+  min-height: 2.5rem;
+}
+
+.ion-custom-input .input-wrapper.sc-ion-input-md,
+.ion-custom-input .native-wrapper.sc-ion-input-ios,
+.label-text-wrapper.sc-ion-input-ios {
+  padding: 0px 20px !important;
+}
+
+.input-bottom.sc-ion-input-ios {
+  padding: 0px 30px;
+}

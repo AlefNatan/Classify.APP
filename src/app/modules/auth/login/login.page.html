@@ -1,0 +1,66 @@
+<ion-content class="">
+  <main class="flex flex-col justify-center items-center h-screen bg-white p-5">
+    <div class="bg-white border border-[#00000020] rounded-lg p-10 w-full">
+      <section class="text-center mb-10">
+        <div
+          class="flex items-center gap-2 justify-center w-32 mx-auto bg-gray-300 px-3 py-2 rounded-md font-bold text-1xl text-gray-700"
+        >
+          <ion-icon name="pricetags"></ion-icon>
+          Classify
+        </div>
+
+        <ion-text color="dark">
+          <h4 class="font-semibold text-xl text-black">Acesse sua conta</h4>
+        </ion-text>
+      </section>
+
+      <form class="flex flex-col gap-5" [formGroup]="LoginFormGroup">
+        <div>
+          <app-text-input
+            [label]="'E-mail'"
+            [placeholder]="'Digite seu e-mail'"
+            [type]="'email'"
+            [controlName]="LoginFormGroup.controls['email']"
+            (valueChange)="updateFormControlValue(LoginFormGroup, 'email', $event)"
+          />
+        </div>
+
+        <div>
+          <app-password-input
+            [label]="'Senha'"
+            [placeholder]="'Digite sua senha'"
+            [controlName]="LoginFormGroup.controls['password']"
+            (valueChange)="updateFormControlValue(LoginFormGroup, 'password', $event)"
+          />
+        </div>
+
+        <div>
+          <section class="flex items-center">
+            <ion-checkbox
+              formControlName="remember"
+              labelPlacement="end"
+              slot="start"
+              class="mr-2"
+            >
+            </ion-checkbox>
+            <span class="text-black">Manter conectado</span>
+          </section>
+        </div>
+
+        <button
+          class="bg-primary text-white h-10 rounded-lg w-full"
+          type="submit"
+          (click)="handleSubmit()"
+        >
+          Entrar
+        </button>
+      </form>
+
+      <section class="flex justify-center items-center mt-5">
+        <a class="text-primary" routerLink="/auth/signup">
+          Não tenho uma conta
+        </a>
+      </section>
+    </div>
+  </main>
+</ion-content>
