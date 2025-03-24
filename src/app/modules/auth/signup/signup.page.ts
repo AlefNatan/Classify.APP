@@ -92,7 +92,7 @@ export class SignupPage extends FormComponent implements OnInit, OnDestroy {
           error: async (error) => {
             this.loadingService.dismissLoader();
             await this.toastService.basicToast(
-              error.error?.message ||
+              error?.message ||
                 'Ocorreu um erro ao criar sua conta, tente novamente mais tarde.',
               'negative',
             );

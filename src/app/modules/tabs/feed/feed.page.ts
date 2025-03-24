@@ -102,8 +102,9 @@ export class FeedPage implements OnInit, OnDestroy {
   }
 
   public async sharePostEmail(post: Post) {
-    const message = `Olá! Vi seu post sobre ${post.title} e gostaria de mais informações.`;
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${post.user.phone}&text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const subject = `Interesse no post: ${post.title}`;
+    const body = `Olá! Vi seu post sobre "${post.title}" e gostaria de mais informações.`;
+    const mailtoUrl = `mailto:${post.user.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, '_blank');
   }
 }

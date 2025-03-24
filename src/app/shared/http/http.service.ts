@@ -98,19 +98,21 @@ export default class HttpService {
   private handleError(error: any) {
     let errorResponse;
 
+    const errorJson = JSON.parse(error);
+
     errorResponse = {
       success: false,
-      message: 'Erro desconhecido',
+      message: errorJson.message || 'Erro desconhecido',
       typeMessage: 0,
     };
 
     if (error.error && typeof error.error === 'object') {
-      errorResponse.message = error.error.message || 'Erro desconhecido';
+      errorResponse.message = errorResponse.message || 'Erro desconhecido';
       errorResponse.typeMessage = error.error.typeMessage || 0;
     } else if (error.error instanceof ErrorEvent) {
-      errorResponse.message = error.error.message || 'Erro desconhecido';
+      errorResponse.message = errorResponse.message || 'Erro desconhecido';
     } else {
-      errorResponse.message = error.message || 'Erro desconhecido';
+      errorResponse.message = errorResponse.message || 'Erro desconhecido';
     }
 
     return throwError(() => errorResponse);

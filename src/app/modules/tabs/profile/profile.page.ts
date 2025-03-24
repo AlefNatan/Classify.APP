@@ -67,7 +67,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       .subscribe({
         next: (response) => {
           this.posts = [...this.posts, ...response.items];
-          this.hasMore = response.items.length > 0;
+          this.hasMore = false;
           this.isLoading = false;
           event?.target?.complete();
         },
